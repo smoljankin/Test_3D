@@ -6,12 +6,12 @@ using namespace std;
 int main()
 {
     Model model;
-
-    if (ObjParser::load("OBJ/triangle.obj", model)) {
+    string path = "OBJ/triangle.obj";
+    
+    if (ObjParser::load(path, model)) {
         cout << "Faces: " << model.faces.size() << endl;
     }
 
-    int x;
-    cin >> x;
+    cin.get();
     return 0;
 }
