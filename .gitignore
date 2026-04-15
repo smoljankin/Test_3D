@@ -17,7 +17,8 @@ x86/
 
 # Скомпільовані файли
 *.exe
-*.obj
+#*.obj
+build/*.obj
 *.pdb
 *.ilk
 *.exp
