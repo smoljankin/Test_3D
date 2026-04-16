@@ -64,8 +64,8 @@ void Renderer::drawFilledTriangle(int x1, int y1,
         int xb = edgeX(x1, y1, x2, y2, y);
         if (xa > xb) std::swap(xa, xb);
         drawLine(xa, y, xb, y);
-        SDL_RenderPresent(renderer);
-        SDL_Delay(15);
+        //SDL_RenderPresent(renderer);
+        //SDL_Delay(15);
     }
 
     for (int y = y2; y <= y3; y++) {
@@ -73,9 +73,11 @@ void Renderer::drawFilledTriangle(int x1, int y1,
         int xb = edgeX(x2, y2, x3, y3, y);
         if (xa > xb) std::swap(xa, xb);
         drawLine(xa, y, xb, y);
-        SDL_RenderPresent(renderer);
-        SDL_Delay(15);
+        //SDL_RenderPresent(renderer);
+        //SDL_Delay(15);
     }
+
+    SDL_RenderPresent(renderer);
 }
 
 

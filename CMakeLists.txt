@@ -10,17 +10,7 @@ set(CMAKE_OBJECT_PATH_MAX 260)
 # Вкажи де знаходяться заголовкові файли
 include_directories(include)
 
-# Шлях до SDL2 (змініть якщо у вас інший)
-set(SDL2_PATH "D:/SDL2/SDL2-2.32.4")
-
-include_directories(
-    include
-    ${SDL2_PATH}/include
-)
-
-link_directories(
-    ${SDL2_PATH}/lib/x64
-)
+find_package(SDL2 CONFIG REQUIRED)
 
 # Вкажи всі .cpp файли
 add_executable(Test_3D
@@ -30,8 +20,9 @@ add_executable(Test_3D
 )
 
 target_link_libraries(Test_3D
-    SDL2
-    SDL2main
+    PRIVATE
+    SDL2::SDL2
+    SDL2::SDL2main
 )
 
 # Копіювати OBJ файли після білду
@@ -41,9 +32,3 @@ add_custom_command(TARGET Test_3D POST_BUILD
     $<TARGET_FILE_DIR:Test_3D>/OBJ
 )
 
-# Копіювати SDL2.dll після білду
-add_custom_command(TARGET Test_3D POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E copy
-    ${SDL2_PATH}/lib/x64/SDL2.dll
-    $<TARGET_FILE_DIR:Test_3D>
-)
